@@ -16,7 +16,7 @@ const push_key = process.env.PUSH_KEY
 // wxpusher
 const uid_s = process.env.UID_S
 const app_token = process.env.APP_TOKEN
-const wxpusher_url = "http://wxpusher.zjiecode.com/api/send/message"
+const wxpusher_url = 'http://wxpusher.zjiecode.com/api/send/message'
 
 // 京东脚本文件
 const js_url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'

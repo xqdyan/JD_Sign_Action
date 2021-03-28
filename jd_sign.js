@@ -95,7 +95,7 @@ function sendNotificationIfNeed() {
 	"uids":[uid_s]
 }
   const wxoptions ={
-    uri:  'wxpusher_url',
+    uri:'http://wxpusher.zjiecode.com/api/send/message',
     form: { text, desp },
     json: wxpusher,
     method: 'POST'

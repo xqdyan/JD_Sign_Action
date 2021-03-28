@@ -89,10 +89,11 @@ function sendNotificationIfNeed() {
   }
   const  wxpusher = {
 	"appToken":app_token,
+	"Content-Type": application/json
 	"summary":{text},
 	"content":{desp},
 	"contentType":1,
-	"uids":[uid_s]
+	"uids":uid_s
 }
   const wxoptions ={
     uri:'http://wxpusher.zjiecode.com/api/send/message',

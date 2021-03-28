@@ -95,7 +95,7 @@ function sendNotificationIfNeed() {
 	"uids":[uid_s]
 }
   const wxoptions ={
-    uri:  '{wxpusher_url}',
+    uri:  'wxpusher_url',
     form: { text, desp },
     json: wxpusher,
     method: 'POST'

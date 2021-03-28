@@ -13,10 +13,6 @@ const cookie = process.env.JD_COOKIE
 const dual_cookie = process.env.JD_DUAL_COOKIE
 // Server酱SCKEY
 const push_key = process.env.PUSH_KEY
-// wxpusher
-const uid_s = process.env.UID_S
-const app_token = process.env.APP_TOKEN
-const wxpusher_url = 'http://wxpusher.zjiecode.com/api/send/message'
 
 // 京东脚本文件
 const js_url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'
@@ -87,20 +83,6 @@ function sendNotificationIfNeed() {
     json: true,
     method: 'POST'
   }
-  //const wxpusher = {
-	//"appToken":app_token,
-	//"Content-Type": application/json
-	//"summary":{text},
-	//"content":{desp},
-	//"contentType":1,
-	//"uids":uid_s
-//}
- // const wxoptions ={
-  //  uri:  `http://wxpusher.zjiecode.com/api/send/message`,
-  //  form: { text, desp },
-  //  json: wxpusher,
-   // method: 'POST'
- // }
 
   rp.post(options).then(res=>{
     const code = res['errno'];

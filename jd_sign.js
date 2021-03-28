@@ -87,20 +87,20 @@ function sendNotificationIfNeed() {
     json: true,
     method: 'POST'
   }
-  const  wxpusher = {
-	"appToken":app_token,
-	"Content-Type": application/json
-	"summary":{text},
-	"content":{desp},
-	"contentType":1,
-	"uids":uid_s
-}
-  const wxoptions ={
-    uri:'http://wxpusher.zjiecode.com/api/send/message',
-    form: { text, desp },
-    json: wxpusher,
-    method: 'POST'
-  }
+  //const wxpusher = {
+	//"appToken":app_token,
+	//"Content-Type": application/json
+	//"summary":{text},
+	//"content":{desp},
+	//"contentType":1,
+	//"uids":uid_s
+//}
+ // const wxoptions ={
+  //  uri:  `http://wxpusher.zjiecode.com/api/send/message`,
+  //  form: { text, desp },
+  //  json: wxpusher,
+   // method: 'POST'
+ // }
 
   rp.post(options).then(res=>{
     const code = res['errno'];

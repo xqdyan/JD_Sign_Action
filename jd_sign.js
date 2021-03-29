@@ -13,6 +13,8 @@ const cookie = process.env.JD_COOKIE
 const dual_cookie = process.env.JD_DUAL_COOKIE
 // Server酱SCKEY
 const push_key = process.env.PUSH_KEY
+// pushplus的ID
+const pushplus_id = process.env.PUSHPLUS_ID
 
 // 京东脚本文件
 const js_url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'
@@ -73,9 +75,14 @@ function sendNotificationIfNeed() {
 
   let text = "京东签到_" + dateFormat();
   let desp = fs.readFileSync(result_path, "utf8")
+  let title = "京东签到_" + dateFormat();
+  let content = fs.readFileSync(result_path, "utf8")
 
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
+  
+   // 去除末尾的换行
+  let token = pushplus_id.replace(/[\r\n]/g,"")
 
   const options ={
     uri:  `https://sc.ftqq.com/${SCKEY}.send`,
@@ -83,7 +90,28 @@ function sendNotificationIfNeed() {
     json: true,
     method: 'POST'
   }
-
+  
+  const poptions ={
+    uri:  `http://pushplus.hxtrip.com/send`,
+    form: { token, title, content },
+    json: true,
+    method: 'POST'
+  }
+  rp.post(poptions).then(res=>{
+    const code = res['errno'];
+    if (code == 0) {
+      console.log("通知发送成功，任务结束！")
+    }
+    else {
+      console.log(res);
+      console.log("通知发送失败，任务中断！")
+      fs.writeFileSync(error_path, JSON.stringify(res), 'utf8')
+    }
+  }).catch((err)=>{
+    console.log("通知发送失败，任务中断！")
+    fs.writeFileSync(error_path, err, 'utf8')
+  })
+}
   rp.post(options).then(res=>{
     const code = res['errno'];
     if (code == 0) {

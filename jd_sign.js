@@ -111,7 +111,7 @@ function sendNotificationIfNeed() {
     console.log("通知发送失败，任务中断！")
     fs.writeFileSync(error_path, err, 'utf8')
   })
-}
+
   rp.post(options).then(res=>{
     const code = res['errno'];
     if (code == 0) {
